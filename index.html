@@ -195,7 +195,7 @@
           <article class="dish-card dish-feature reveal">
             <div class="dish-image">
               <img
-                src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1300&q=85"
+                src="./src/img/r1.webp"
                 alt="Ribeye a la parrilla servido con guarnición"
                 loading="lazy"
               /><span>EL FAVORITO DE LA CASA</span>
@@ -203,9 +203,9 @@
             <div class="dish-info">
               <div>
                 <h3>Ribeye Imperial</h3>
-                <p>350 g · maduración 28 días · mantequilla de hierbas</p>
+                <p>350 g · maduración 28 días · guarnición de la casa</p>
               </div>
-              <strong>$32</strong>
+              <strong>$24</strong>
             </div>
           </article>
           <article class="dish-card reveal">
@@ -219,15 +219,15 @@
             <div class="dish-info">
               <div>
                 <h3>New York Strip</h3>
-                <p>300 g · sabor profundo · sal de la casa</p>
+                <p>300 g · sal de la casa · papas al romero</p>
               </div>
-              <strong>$28</strong>
+              <strong>$21</strong>
             </div>
           </article>
           <article class="dish-card reveal">
             <div class="dish-image">
               <img
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1000&q=85"
+                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=85"
                 alt="Parrilla de carbón con cortes de carne al fuego"
                 loading="lazy"
               />
@@ -237,13 +237,13 @@
                 <h3>Tomahawk para dos</h3>
                 <p>900 g · al centro de la mesa · dos guarniciones</p>
               </div>
-              <strong>$68</strong>
+              <strong>$45</strong>
             </div>
           </article>
         </div>
         <p class="menu-footnote">
-          * Precios referenciales. Consulta disponibilidad y sugerencias del día
-          en el restaurante.
+          * Precios en dólares (USD), con guarnición incluida. Consulta
+          disponibilidad y sugerencias del día en el restaurante.
         </p>
       </section>
 
@@ -365,9 +365,51 @@
           </figure>
         </div>
         <p class="review-disclaimer">
-          Testimonios de ejemplo para presentación. Sustituir por reseñas
-          verificadas antes de publicar.
+          Opiniones de ejemplo. Las opiniones que envíes se guardan únicamente
+          en este dispositivo.
         </p>
+        <form class="review-form" id="review-form">
+          <h3>¿Ya nos visitaste? Cuéntanos cómo te fue.</h3>
+          <div class="review-form-row">
+            <label
+              >Tu nombre
+              <input
+                type="text"
+                name="review-name"
+                autocomplete="name"
+                minlength="2"
+                maxlength="50"
+                placeholder="¿Cómo te llamas?"
+                required
+              />
+            </label>
+            <label
+              >Tu calificación
+              <select name="review-rating" required>
+                <option value="5" selected>★★★★★ — Excelente</option>
+                <option value="4">★★★★☆ — Muy bueno</option>
+                <option value="3">★★★☆☆ — Bueno</option>
+                <option value="2">★★☆☆☆ — Puede mejorar</option>
+                <option value="1">★☆☆☆☆ — No fue lo esperado</option>
+              </select>
+            </label>
+          </div>
+          <label
+            >Tu opinión
+            <textarea
+              name="review-comment"
+              rows="4"
+              minlength="10"
+              maxlength="400"
+              placeholder="Comparte tu experiencia con la comida, el ambiente o la atención."
+              required
+            ></textarea>
+          </label>
+          <button class="button button-gold" type="submit">
+            Publicar opinión <span aria-hidden="true">↗</span>
+          </button>
+          <p class="review-form-status" id="review-status" aria-live="polite"></p>
+        </form>
       </section>
 
       <section class="reservation-section" id="reservas">
