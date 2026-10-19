@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#171713" />
+    <link rel="icon" type="image/svg+xml" href="./src/img/corte-imperial-icon.svg" />
     <meta
       name="description"
       content="Corte Imperial: fuego lento, cortes excepcionales y momentos que merecen quedarse. Reserva tu mesa en Quito."
@@ -428,14 +429,9 @@
           <p class="eyebrow"><span></span> RESERVAS</p>
           <h2>Hagamos<br />espacio <em>para ti.</em></h2>
           <p class="reservation-intro">
-            Déjanos los detalles y nos pondremos en contacto para confirmar tu
-            mesa.
+            Prueba el formulario y mira cómo quedaría tu solicitud de reserva.
           </p>
-          <form
-            class="reservation-form"
-            action="./src/page/process_reservation.php"
-            method="post"
-          >
+          <form class="reservation-form" id="reservation-form">
             <label
               >Nombre completo<input
                 type="text"
@@ -488,9 +484,15 @@
               Solicitar reserva <span aria-hidden="true">↗</span>
             </button>
             <p class="form-note">
-              La reserva queda pendiente de confirmación por parte del
-              restaurante.
+              Demo: la solicitud se guarda solo en este navegador. No se envía
+              al restaurante ni confirma una mesa real.
             </p>
+            <p
+              class="reservation-status"
+              id="reservation-status"
+              role="status"
+              aria-live="polite"
+            ></p>
           </form>
         </div>
       </section>

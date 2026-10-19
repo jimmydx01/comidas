@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#171713">
+    <link rel="icon" type="image/svg+xml" href="../../src/img/corte-imperial-icon.svg">
     <title>Corte Imperial</title>
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
@@ -237,7 +239,7 @@
 <!-- formulario -->
          <div class="w-full lg:w-1/2 xl:w-5/12 px-4">
             <div class="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
-               <form method="post" action="process_reservation.php">
+               <form id="contact-reservation-form">
                   <div class="mb-6">
                      <input
                         type="text"
@@ -303,6 +305,7 @@
                         <div>
                             <select
                               name="package"
+                              required
                                 class="
                                 w-full
                                 rounded
@@ -361,6 +364,7 @@
                      </button>
                   </div>
                </form>
+               <p id="contact-reservation-status" class="mt-4 text-sm text-gray-700" role="status" aria-live="polite"></p>
                <div>
                   <span class="absolute -top-10 -right-9 z-[-1]">
                      <svg
@@ -1272,6 +1276,30 @@
           navToggle.item(i).classList.toggle("hidden");
         }
       };
+
+    const contactReservationForm = document.getElementById("contact-reservation-form");
+    const contactReservationStatus = document.getElementById("contact-reservation-status");
+    const contactReservationDate = document.getElementById("reservation_datetime");
+    const contactLocalDate = new Date(Date.now() - new Date().getTimezoneOffset() * 60000);
+    contactReservationDate.min = contactLocalDate.toISOString().slice(0, 16);
+
+    contactReservationForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!contactReservationForm.reportValidity()) return;
+
+      const reservation = Object.fromEntries(new FormData(contactReservationForm));
+      reservation.createdAt = new Date().toISOString();
+
+      try {
+        localStorage.setItem("corte-imperial-contact-demo-reservation", JSON.stringify(reservation));
+        contactReservationStatus.textContent = "Demo: recibimos tu solicitud y quedó guardada en este navegador. No se envió al restaurante ni confirma una mesa.";
+      } catch {
+        contactReservationStatus.textContent = "Demo: solicitud recibida en esta página, pero no se pudo guardar en el navegador. No se envió al restaurante.";
+      }
+
+      contactReservationForm.reset();
+      contactReservationDate.min = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+    });
 </script>
 </body>
 </html>

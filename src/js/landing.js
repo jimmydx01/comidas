@@ -58,6 +58,43 @@ const reservationDate = document.querySelector('[name="reservation_datetime"]');
 const localDate = new Date(Date.now() - new Date().getTimezoneOffset() * 60000);
 reservationDate.min = localDate.toISOString().slice(0, 16);
 
+const reservationForm = document.querySelector("#reservation-form");
+const reservationStatus = document.querySelector("#reservation-status");
+
+reservationForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (!reservationForm.reportValidity()) return;
+
+  const formData = new FormData(reservationForm);
+  const reservation = Object.fromEntries(
+    [
+      "name",
+      "email",
+      "phone",
+      "reservation_datetime",
+      "package",
+      "message",
+    ].map((field) => [field, String(formData.get(field) ?? "").trim()]),
+  );
+  reservation.createdAt = new Date().toISOString();
+
+  try {
+    localStorage.setItem(
+      "corte-imperial-demo-reservation",
+      JSON.stringify(reservation),
+    );
+    reservationStatus.textContent =
+      "Solicitud de demostración guardada en este navegador. No se envió al restaurante ni confirma una mesa.";
+  } catch {
+    reservationStatus.textContent =
+      "Solicitud de demostración recibida en esta página, pero no se pudo guardar en el navegador. No se envió al restaurante.";
+  }
+
+  reservationForm.reset();
+  reservationDate.min = localDate.toISOString().slice(0, 16);
+});
+
 const reviewForm = document.querySelector("#review-form");
 const reviewGrid = document.querySelector(".review-grid");
 const reviewStatus = document.querySelector("#review-status");

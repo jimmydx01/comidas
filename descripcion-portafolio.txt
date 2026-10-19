@@ -1,0 +1,5 @@
+TÍTULO
+Corte Imperial — Sitio web para un restaurante de carnes a la brasa
+
+DESCRIPCIÓN
+Diseño y desarrollo de una página web de demostración para Corte Imperial, un concepto de restaurante steakhouse en Quito. El sitio presenta la experiencia del restaurante, su carta de cortes, la historia de la marca, los espacios para eventos y una sección de opiniones. Incluye formularios interactivos de reserva y reseñas hechos con HTML, CSS y JavaScript. Los datos se guardan localmente en el navegador: no se envían al restaurante ni confirman una reserva real. La interfaz adaptable a móviles usa una estética cálida inspirada en el fuego y la parrilla.
